@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using FootballClubWeb.Models;
 
 namespace FootballClubWeb.Data
 {
@@ -9,5 +10,6 @@ namespace FootballClubWeb.Data
             : base(options)
         {
         }
+        public DbSet<FootballClubWeb.Models.Footballer>? Footballer { get; set; }
     }
 }
