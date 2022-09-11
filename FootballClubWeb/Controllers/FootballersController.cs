@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using FootballClubWeb.Data;
 using FootballClubWeb.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace FootballClubWeb.Controllers
 {
@@ -25,6 +26,23 @@ namespace FootballClubWeb.Controllers
               return _context.Footballer != null ? 
                           View(await _context.Footballer.ToListAsync()) :
                           Problem("Entity set 'ApplicationDbContext.Footballer'  is null.");
+        }
+
+
+        // GET: Footballers/ShowSearchForm
+        public async Task<IActionResult> ShowSearchForm()
+        {
+            return _context.Footballer != null ?
+                        View() :
+                        Problem("Entity set 'ApplicationDbContext.Footballer'  is null.");
+        }
+
+        // POST: Footballers/ShowSearchResults
+        public async Task<IActionResult> ShowSearchResults(String SearchPhrase)
+        {
+            return _context.Footballer != null ?
+                        View("Index", await _context.Footballer.Where(j => (j.Name.Contains(SearchPhrase) || j.Surname.Contains(SearchPhrase))).ToListAsync()) :
+                        Problem("Entity set 'ApplicationDbContext.Footballer'  is null.");
         }
 
         // GET: Footballers/Details/5
@@ -46,6 +64,7 @@ namespace FootballClubWeb.Controllers
         }
 
         // GET: Footballers/Create
+        [Authorize]
         public IActionResult Create()
         {
             return View();
@@ -54,6 +73,7 @@ namespace FootballClubWeb.Controllers
         // POST: Footballers/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,Name,Surname,Position")] Footballer footballer)
@@ -68,6 +88,7 @@ namespace FootballClubWeb.Controllers
         }
 
         // GET: Footballers/Edit/5
+        [Authorize]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null || _context.Footballer == null)
@@ -86,6 +107,7 @@ namespace FootballClubWeb.Controllers
         // POST: Footballers/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Surname,Position")] Footballer footballer)
@@ -119,6 +141,7 @@ namespace FootballClubWeb.Controllers
         }
 
         // GET: Footballers/Delete/5
+        [Authorize]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null || _context.Footballer == null)
@@ -139,6 +162,7 @@ namespace FootballClubWeb.Controllers
         // POST: Footballers/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             if (_context.Footballer == null)
