@@ -30,7 +30,7 @@ namespace FootballClubWeb.Controllers
 
 
         // GET: Footballers/ShowSearchForm
-        public async Task<IActionResult> ShowSearchForm()
+        public IActionResult ShowSearchForm()
         {
             return _context.Footballer != null ?
                         View() :
