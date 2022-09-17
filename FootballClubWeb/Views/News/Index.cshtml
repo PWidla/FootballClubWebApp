@@ -15,14 +15,14 @@
         <div class="post">
             <p class="details1">@item.Date</p>
             <div class="buffer">
-                <div class="content">
+                <div class="newsContent">
                     @*<a href="#"><img src="images/thumb01.jpg" /></a>*@
                     <h2><a href="#">@item.Title</a></h2>
                     @{
                         var str = @item.Content;
-                        if (str.length > 10) str = str.substring(0, 10);
+                        if (str.Length > 25) str = str.Substring(0, 25);
                     }
-                    <p>str</p>
+                    <p>@str</p>
                 </div>
                 <p class="details2"><a href="#">Read More</a></p>
             </div>
