@@ -1,0 +1,47 @@
+﻿@model IEnumerable<FootballClubWeb.Models.News>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<div id="content">
+    @foreach (var item in Model)
+    {
+        <div class="post">
+            <p class="details1">@item.Date</p>
+            <div class="buffer">
+                <div class="content">
+                    @*<a href="#"><img src="images/thumb01.jpg" /></a>*@
+                    <h2><a href="#">@item.Title</a></h2>
+                    @{
+                        var str = @item.Content;
+                        if (str.length > 10) str = str.substring(0, 10);
+                    }
+                    <p>str</p>
+                </div>
+                <p class="details2"><a href="#">Read More</a></p>
+            </div>
+        </div>
+
+
+
+        @*<tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Date)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>*@
+    }
+</div>

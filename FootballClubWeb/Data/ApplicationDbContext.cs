@@ -11,5 +11,6 @@ namespace FootballClubWeb.Data
         {
         }
         public DbSet<FootballClubWeb.Models.Footballer>? Footballer { get; set; }
+        public DbSet<FootballClubWeb.Models.News> News { get; set; }
     }
 }
