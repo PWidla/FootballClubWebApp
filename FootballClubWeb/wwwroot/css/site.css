@@ -35,6 +35,21 @@ body {
     color: white;
 }
 
+/*history*/
 
+#historyHeading{
+    color: red;
+    font-weight: bold;
+    text-align: center;
+    padding: 0.5em;
+}
 
+#historyText{
+    line-height: 1.6;
+    color: tan;
+}
 
+#imgPlayers {
+    text-align: center;
+    padding-bottom: 2em;
+}
