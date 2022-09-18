@@ -18,26 +18,23 @@ body {
 }
 
 /*news*/
-.newsContent {
-    overflow: hidden;
-    width: 655px;
+#content {
+    display: flex;
+    flex-wrap: wrap;
 }
 
-.details1 {
-        color: beige;
-        font-size: 0.8em;
-        font-family: Verdana;
-        font-weight: bold;
-        padding: 8px 7px;
-        text-transform: uppercase;
-        margin-bottom: 5px;
-}
 
 .post {
+    margin: 10px;
+    padding: 10px;
+    flex: 40%;
     border: 1px solid #CBCBCB;
     padding: 10px;
     background-color: peru;
     height: 260px;
     color: white;
 }
+
+
+
 
